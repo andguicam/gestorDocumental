@@ -45,9 +45,23 @@ class TestPlantillaWord {
 	        XWPFDocument document = new XWPFDocument(Files.newInputStream(msWordPath));
 	        List<XWPFParagraph> paragraphs = document.getParagraphs();
 	        document.close();
-	        assertEquals("Capítulo primero", paragraphs.get(0).getText());	        
+	        assertEquals("Capítulo primero", paragraphs.get(0).getText());
 	        assertEquals(wordDocument.convertTextFileToString("subtitulo.txt"), paragraphs.get(1).getText());
 	        assertEquals(wordDocument.convertTextFileToString("parrafo.txt"), paragraphs.get(2).getText());
+	       
+	    }
+	    /**
+	     * Verifica el subtitulo
+	     * @throws Exception
+	     */
+	    @Test
+	    public void whenParsingOutputDocument_subtitleArial() throws Exception {
+	        Path msWordPath = Paths.get("Quijote.docx");
+	        logger.info("path ",msWordPath);
+	        XWPFDocument document = new XWPFDocument(Files.newInputStream(msWordPath));
+	        List<XWPFParagraph> paragraphs = document.getParagraphs();
+	        document.close();
+	        assertEquals("Arial", paragraphs.get(1).getRuns().get(0).getFontName());
 	       
 	    }
 	}
