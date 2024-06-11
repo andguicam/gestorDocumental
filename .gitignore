@@ -1,0 +1,6 @@
+.gradle/
+lib/build/
+bin/
+lib/Quijote.docx
+!gradle-wrapper.jar
+!gradle-wrapper.properties
